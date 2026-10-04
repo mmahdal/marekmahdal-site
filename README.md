@@ -20,7 +20,7 @@ assets/favicon.svg
 Search for `TODO(Marek)` and `[` placeholders:
 
 - `index.html`: LinkedIn slug; email user/domain in the script at the bottom.
-- `privacy.html`: written for a personal, single-user Gmail connection; adjust if the scopes or use change.
+- `privacy.html`: single-paragraph no-data-collection statement. Deliberately does not describe any connected tools.
 - `assets/photo.jpg`: replace the placeholder image.
 
 ## Preview locally
