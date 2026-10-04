@@ -20,7 +20,7 @@ assets/favicon.svg
 Search for `TODO(Marek)` and `[` placeholders:
 
 - `index.html`: LinkedIn slug; email user/domain in the script at the bottom.
-- `privacy.html`: app name, contact address, Google scopes requested and why.
+- `privacy.html`: written for a personal, single-user Gmail connection; adjust if the scopes or use change.
 - `assets/photo.jpg`: replace the placeholder image.
 
 ## Preview locally
@@ -32,5 +32,16 @@ python3 -m http.server 8000
 ## Deploy
 
 Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`.
-Privacy policy URL for Google: `https://<user>.github.io/marekmahdal-site/privacy.html`
-(or `https://<domain>/privacy.html` once a custom domain is set via a `CNAME` file).
+
+Custom domain is `marekmahdal.com` (the `CNAME` file in the repo root). DNS at the registrar:
+
+| Type  | Host | Value |
+|-------|------|-------|
+| A     | @    | 185.199.108.153 |
+| A     | @    | 185.199.109.153 |
+| A     | @    | 185.199.110.153 |
+| A     | @    | 185.199.111.153 |
+| CNAME | www  | mmahdal.github.io |
+
+Then Settings → Pages → Custom domain: `marekmahdal.com` → Save, wait for the DNS check, tick *Enforce HTTPS*.
+Privacy policy URL for Google: `https://marekmahdal.com/privacy.html`.
