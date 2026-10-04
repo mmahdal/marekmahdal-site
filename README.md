@@ -1,40 +1,36 @@
-# marekmahdal — personal consultancy site
+# marekmahdal-site
 
-Plain HTML and CSS, no build step. Hosted on GitHub Pages from the `main` branch.
+Personal one-pager plus a privacy policy page. Plain HTML and CSS, no build step.
+Hosted on GitHub Pages from the `main` branch.
 
-## Structure
+## Files
 
 ```
-index.html        single-page site (hero, services, approach, about, contact)
-404.html          not-found page served by GitHub Pages
-assets/style.css  all styling; theme tokens live in :root
+index.html         one-pager: photo, name, LinkedIn, email
+privacy.html       privacy policy (link this from Google OAuth consent screen)
+assets/style.css   all styling; colours in :root
+assets/photo.jpg   your portrait — replace the placeholder (square, ~800x800 px)
 assets/favicon.svg
-.nojekyll         tells Pages to serve files as-is (no Jekyll processing)
+404.html
+.nojekyll          serve files as-is, no Jekyll
 ```
 
-## Editing
+## Things to fill in
 
-Open `index.html` in any editor. Search for `TODO(Marek)` to find the placeholder copy
-that still needs real content. Colours, fonts and spacing are variables at the top of
-`assets/style.css`.
+Search for `TODO(Marek)` and `[` placeholders:
+
+- `index.html`: LinkedIn slug; email user/domain in the script at the bottom.
+- `privacy.html`: app name, contact address, Google scopes requested and why.
+- `assets/photo.jpg`: replace the placeholder image.
 
 ## Preview locally
-
-Any static server works, e.g. from the repo folder:
 
 ```
 python3 -m http.server 8000
 ```
 
-then open http://localhost:8000.
-
 ## Deploy
 
-Pushing to `main` deploys automatically once Pages is enabled:
-Settings → Pages → Build and deployment → Source: *Deploy from a branch*, Branch: `main` / `/ (root)`.
-
-## Custom domain
-
-Add a file named `CNAME` containing only the domain (e.g. `marekmahdal.com`), then point the
-domain's DNS at GitHub Pages (A records to GitHub's Pages IPs, or a CNAME to `<user>.github.io`)
-and enable **Enforce HTTPS** in Settings → Pages.
+Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`.
+Privacy policy URL for Google: `https://<user>.github.io/marekmahdal-site/privacy.html`
+(or `https://<domain>/privacy.html` once a custom domain is set via a `CNAME` file).

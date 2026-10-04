@@ -1,43 +1,36 @@
 /* ------------------------------------------------------------------
-   Marek Mahdal — site styles
-   Plain CSS, no build step. Edit tokens in :root to retheme.
+   Marek Mahdal — site styles. Plain CSS, no build step.
    ------------------------------------------------------------------ */
 
 :root {
   --bg: #fbfaf7;
-  --bg-elevated: #ffffff;
   --text: #1c1b18;
   --text-muted: #5f5c55;
   --accent: #0f4c5c;
-  --accent-contrast: #ffffff;
   --rule: #e4e1da;
-
   --font-sans: ui-sans-serif, -apple-system, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
   --font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-
-  --measure: 64ch;
   --gutter: clamp(16px, 4vw, 48px);
-  --radius: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #15161a;
-    --bg-elevated: #1d1f25;
     --text: #ebe9e3;
     --text-muted: #a4a19a;
     --accent: #7fc6d4;
-    --accent-contrast: #0e1a1e;
     --rule: #2b2e36;
   }
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html, body { height: 100%; }
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
@@ -49,130 +42,92 @@ body {
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
 
-/* Layout -------------------------------------------------------- */
+/* One-pager ----------------------------------------------------- */
 
-.site-header,
-main,
-.site-footer {
-  width: min(100% - 2 * var(--gutter), 1040px);
-  margin-inline: auto;
-}
-
-.site-header {
+.card-page {
+  flex: 1;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 28px 0 20px;
-  border-bottom: 1px solid var(--rule);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 8vh, 96px) var(--gutter);
 }
 
-.wordmark {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: 0.01em;
+.portrait {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: var(--rule);
 }
 
-.site-nav { display: flex; flex-wrap: wrap; gap: 20px; }
-.site-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
-.site-nav a:hover { color: var(--text); }
-
-/* Hero ---------------------------------------------------------- */
-
-.hero { padding: clamp(56px, 10vw, 120px) 0 clamp(40px, 6vw, 72px); }
-
-.eyebrow {
-  margin: 0 0 16px;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-h1 {
-  margin: 0;
-  max-width: 22ch;
+.card-page h1 {
+  margin: 28px 0 20px;
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: clamp(2rem, 4.5vw + 0.5rem, 3.6rem);
+  font-size: clamp(1.9rem, 3vw + 0.8rem, 2.8rem);
   line-height: 1.1;
   letter-spacing: -0.01em;
 }
 
-.lede {
-  max-width: var(--measure);
-  margin: 24px 0 0;
-  font-size: 1.15em;
-  color: var(--text-muted);
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  font-size: 1.05rem;
 }
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+/* Prose pages (privacy) ----------------------------------------- */
 
-.button {
-  display: inline-block;
-  padding: 12px 20px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--accent-contrast);
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid var(--accent);
-}
-.button:hover { filter: brightness(1.08); }
-
-.button-secondary {
-  background: transparent;
-  color: var(--accent);
+.prose {
+  width: min(100% - 2 * var(--gutter), 720px);
+  margin: 0 auto;
+  padding: clamp(32px, 6vh, 72px) 0 48px;
 }
 
-/* Sections ------------------------------------------------------ */
-
-.section { padding: clamp(40px, 6vw, 72px) 0; border-top: 1px solid var(--rule); }
-
-h2 {
-  margin: 0 0 28px;
+.prose h1 {
+  margin: 8px 0 4px;
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: clamp(1.5rem, 2vw + 0.6rem, 2.1rem);
-  line-height: 1.2;
+  font-size: clamp(1.9rem, 3vw + 0.8rem, 2.6rem);
+  line-height: 1.15;
 }
 
-h3 { margin: 0 0 8px; font-size: 1.1rem; }
-
-.section p { max-width: var(--measure); }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+.prose h2 {
+  margin: 36px 0 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
-.card {
-  padding: 24px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-}
-.card p { margin: 0; color: var(--text-muted); }
+.prose p, .prose li { color: var(--text); }
+.prose ul { padding-left: 1.2em; }
+.prose li { margin: 4px 0; }
 
-.steps { margin: 0; display: grid; gap: 24px; max-width: var(--measure); }
-.steps dt { font-weight: 600; }
-.steps dd { margin: 4px 0 0; color: var(--text-muted); }
+.eyebrow {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.eyebrow a { color: var(--text-muted); text-decoration: none; }
+.eyebrow a:hover { color: var(--text); }
+
+.meta { margin: 0 0 24px; color: var(--text-muted); font-size: 0.9rem; }
 
 /* Footer -------------------------------------------------------- */
 
 .site-footer {
-  padding: 32px 0 48px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  padding: 24px var(--gutter) 32px;
   border-top: 1px solid var(--rule);
   color: var(--text-muted);
   font-size: 0.9rem;
 }
-
-/* Small screens ------------------------------------------------- */
-
-@media (max-width: 600px) {
-  .site-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-}
+.site-footer a { color: var(--text-muted); }
