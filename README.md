@@ -2,6 +2,7 @@
 
 Personal one-pager plus a privacy policy page. Plain HTML and CSS, no build step.
 Hosted on GitHub Pages from the `main` branch.
+A push to `main` publishes the site, so Claude pushes here only when Marek asks for it in that chat (Marek, 23 Nov 2026).
 
 ## Files
 
@@ -33,7 +34,7 @@ python3 -m http.server 8000
 
 Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`.
 
-Custom domain is `marekmahdal.com` (the `CNAME` file in the repo root). DNS at the registrar:
+Custom domain is `marekmahdal.com` (the `CNAME` file in the repo root). DNS at Cloudflare:
 
 | Type  | Host | Value |
 |-------|------|-------|
